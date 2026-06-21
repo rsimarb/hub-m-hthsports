@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 轻量导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fdfdfd;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1f2a3a;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e4e9f0;
+            margin-bottom: 3rem;
+        }
+
+        .nav-mark {
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            color: #3b4a5f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3b4a5f;
+            transition: color 0.15s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #0f1a2b;
+            border-bottom-color: #b7c2d4;
+        }
+
+        /* hero 区域 — 克制叙述 */
+        .hero {
+            margin-bottom: 3.2rem;
+        }
+
+        .hero h1 {
+            font-weight: 450;
+            font-size: 2.1rem;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            color: #101a28;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #405164;
+            max-width: 620px;
+        }
+
+        .hero .inline-link {
+            color: #1f2a3a;
+            text-decoration: underline;
+            text-decoration-color: #b7c2d4;
+            text-underline-offset: 3px;
+            font-weight: 450;
+        }
+
+        .hero .inline-link:hover {
+            text-decoration-color: #1f2a3a;
+        }
+
+        /* 核心介绍 — 短段落 + 引用感 */
+        .intro-block {
+            margin-bottom: 3.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eef2f6;
+            border-bottom: 1px solid #eef2f6;
+            font-size: 0.98rem;
+        }
+
+        .intro-block p + p {
+            margin-top: 1.2rem;
+        }
+
+        /* 三个场景模块 — 卡片极简 */
+        .scenes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 1.8rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .scene-card {
+            flex: 1 1 200px;
+            min-width: 180px;
+            background: #ffffff;
+            border-radius: 0;
+            padding: 0.5rem 0 1rem;
+            border-top: 2px solid #e4e9f0;
+        }
+
+        .scene-card h3 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            color: #111c2c;
+        }
+
+        .scene-card p {
+            font-size: 0.92rem;
+            color: #415366;
+            line-height: 1.65;
+        }
+
+        /* 常见说明 — FAQ风格 摘要 */
+        .faq-section {
+            margin-bottom: 3.2rem;
+        }
+
+        .faq-section h2 {
+            font-weight: 450;
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+            color: #0f1a2b;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid #eef2f6;
+        }
+
+        .faq-q {
+            font-weight: 470;
+            margin-bottom: 0.2rem;
+            color: #1f2a3a;
+        }
+
+        .faq-a {
+            font-size: 0.93rem;
+            color: #4a5b70;
+            margin-top: 0.15rem;
+        }
+
+        .faq-a a {
+            color: #1f2a3a;
+            text-decoration: underline;
+            text-decoration-color: #c8d0dd;
+            text-underline-offset: 3px;
+        }
+
+        .faq-a a:hover {
+            text-decoration-color: #1f2a3a;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e4e9f0;
+            font-size: 0.85rem;
+            color: #6b7c92;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .footer a {
+            color: #4a5b70;
+            text-decoration: none;
+            border-bottom: 1px solid #d7dee8;
+        }
+
+        .footer a:hover {
+            border-bottom-color: #4a5b70;
+        }
+
+        /* 响应式 */
+        @media (max-width: 540px) {
+            .page {
+                padding: 1.8rem 1.2rem 3rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding-bottom: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .scenes {
+                gap: 1.5rem;
+            }
+
+            .scene-card {
+                min-width: 140px;
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="nav">
+        <span class="nav-mark">华体会 · 叙述</span>
+        <ul class="nav-links">
+            <li><a href="#about">关于</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">说明</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero 区域：嵌入链接 -->
+    <div class="hero" id="about">
+        <h1>运动与体验，<br>围绕一种自然的节奏。</h1>
+        <p>
+            我们聊的「<a href="https://m--hthsports.com" class="inline-link">华体会</a>」，来自对日常运动场景的观察与梳理。
+            它并不追求宏大叙事，而是想呈现一种更轻量的介入方式——
+            在频繁的日程里，留出属于身体的片刻。
+        </p>
+    </div>
+
+    <!-- 核心介绍（第二层叙述） -->
+    <div class="intro-block">
+        <p>
+            过去几年，围绕运动与习惯的讨论越来越多。但很多话题过于工具化，反而让人忽略了最初出发的理由。
+            华体会所关注的，恰恰是那些细微的、不成体系的瞬间：一次散步，一段伸展，或者仅仅是在户外站一会儿。
+            这些事本身没有门槛，也不需要复杂的设备。
+        </p>
+        <p>
+            从关键词衍生出来的主题，往往指向一种更自觉的生活态度。
+            不是“必须完成”，而是“可以这样”。我们试着把注意力从结果移开，放到过程本身。
+            也许这听起来有些平淡，但平淡里恰好藏着可持续的秩序。
+        </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3>晨间 · 五分钟</h3>
+            <p>不需要热身指导，不需要换衣服。醒来后拉开窗帘，简单活动关节，感受光线与呼吸。华体会不定义标准，只提供一种可能性。</p>
+        </div>
+        <div class="scene-card">
+            <h3>午后 · 移动</h3>
+            <p>长时间坐着之后，站起来走几步，或者换一条稍远的路线去接水。这些微小的移动，比想象中更能调整状态。华体会把它当作一种日常仪式。</p>
+        </div>
+        <div class="scene-card">
+            <h3>傍晚 · 收束</h3>
+            <p>一天结束前，用几分钟拉伸，或者只是安静地站着。不对抗疲劳，也不追求效率。华体会所理解的收束，是让身体知道自己可以慢下来。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明（FAQ 摘要） -->
+    <div class="faq-section" id="faq">
+        <h2>一些角度的说明</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">「华体会」与运动品牌或机构的关系？</div>
+            <div class="faq-a">没有直接关系。它是一个以运动感知为主题的内容索引，更多侧重个人体验与日常节奏。有兴趣可以看看 <a href="https://m--hthsports.com">华体会</a> 上整理的片段。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">需要特定的时间或场地吗？</div>
+            <div class="faq-a">不需要。场景模块只是举例，实际可以发生在任何你感到方便的地方。核心是降低启动阻力，而不是增加条件。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">这些内容适合什么样的人？</div>
+            <div class="faq-a">适合对运动或习惯养成保持开放态度，但不想被计划绑住的人。也适合只是好奇“另一种叙述方式”的读者。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">是否提供课程或指导服务？</div>
+            <div class="faq-a">不提供。华体会的定位是轻量主题页面，不涉及教学、认证或商业服务。所有内容仅作为视角分享。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <span>华体会 · 轻量导航</span>
+        <span><a href="https://m--hthsports.com">华体会</a> · 自然叙述</span>
+    </footer>
+
+</div>
+</body>
+</html>
